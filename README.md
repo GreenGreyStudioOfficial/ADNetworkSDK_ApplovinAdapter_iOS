@@ -1,3 +1,3 @@
 # ADNetworkSDK_ApplovinAdapter
 
-A description of this package.
+Адаптер для показа рекламы Mobidriven через Applovin
