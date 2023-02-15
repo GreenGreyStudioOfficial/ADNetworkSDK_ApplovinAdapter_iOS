@@ -12,24 +12,12 @@ let package = Package(
             targets: ["ADNetworkSDK_ApplovinAdapter"]
         )
     ],
-    dependencies: [
-        .appLovin
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "ADNetworkSDK_ApplovinAdapter",
-            dependencies: [
-                .AppLovinSDK
-            ]
+            dependencies: []
         )
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
-
-extension Package.Dependency {
-    static let  appLovin: Package.Dependency =
-        .package(url: "https://github.com/AppLovin/AppLovin-MAX-Swift-Package.git", from: Version("11.5.0"))
-}
-
-extension Target.Dependency {
-    static let AppLovinSDK: Target.Dependency = .product(name: "AppLovinSDK", package: "AppLovin-MAX-Swift-Package")
-}
