@@ -10,7 +10,7 @@ import AppLovinSDK
 import ADNetworkSDK
 
 @objc(ALMobidrivenCustomAdapter)
-final class ALMobidrivenCustomAdapter:ALMediationAdapter {
+public class ALMobidrivenCustomAdapter:ALMediationAdapter {
     
     var interstitialAdapter:ALMobidrivenInterstitialAdapter?
     var rewardedAdapter:ALMobidrivenRewardedAdapter?

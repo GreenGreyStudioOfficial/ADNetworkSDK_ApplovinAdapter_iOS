@@ -9,7 +9,7 @@ import Foundation
 import AppLovinSDK
 import ADNetworkSDK
 
-final class ALMobidrivenRewardedAdapter:NSObject {
+public class ALMobidrivenRewardedAdapter:NSObject {
     
     weak var delegate:MARewardedAdapterDelegate?
     

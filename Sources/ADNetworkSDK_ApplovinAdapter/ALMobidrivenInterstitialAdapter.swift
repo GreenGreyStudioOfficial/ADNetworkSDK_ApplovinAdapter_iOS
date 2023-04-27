@@ -9,7 +9,7 @@ import Foundation
 import AppLovinSDK
 import ADNetworkSDK
 
-final class ALMobidrivenInterstitialAdapter:NSObject {
+public class ALMobidrivenInterstitialAdapter:NSObject {
     
     weak var delegate:MAInterstitialAdapterDelegate?
     
