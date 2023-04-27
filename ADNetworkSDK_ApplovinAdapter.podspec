@@ -13,10 +13,10 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   s.source_files = 'Sources/**/*'
 
-  spec.frameworks   = "Foundation", "UIKit"
-  spec.requires_arc = true
-  spec.static_framework = true
-  spec.user_target_xcconfig = { 'ONLY_ACTIVE_ARCH' => 'YES' } 
-  spec.dependency "AppLovinSDK", "~> 11.7.1"
-  spec.dependency "ADNetworkSDK", "~> 1.0.0"
+  s.frameworks   = "Foundation", "UIKit"
+  s.requires_arc = true
+  s.static_framework = true
+  s.user_target_xcconfig = { 'ONLY_ACTIVE_ARCH' => 'YES' } 
+  s.dependency "AppLovinSDK", "~> 11.7.1"
+  s.dependency "ADNetworkSDK", "~> 1.0.0"
 end
