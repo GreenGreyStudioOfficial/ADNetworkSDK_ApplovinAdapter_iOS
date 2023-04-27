@@ -13,7 +13,7 @@ public class ALMobidrivenInterstitialAdapter:NSObject {
     
     weak var delegate:MAInterstitialAdapterDelegate?
     
-    func loadInterstitialAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MAInterstitialAdapterDelegate) {
+    public func loadInterstitialAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MAInterstitialAdapterDelegate) {
         self.delegate = delegate
         
         //print("ADAPTER: ALMobidrivenCustomAdapter loadInterstitialAd")
@@ -24,50 +24,50 @@ public class ALMobidrivenInterstitialAdapter:NSObject {
         }
     }
     
-    func showInterstitialAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MAInterstitialAdapterDelegate) {
+    public func showInterstitialAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MAInterstitialAdapterDelegate) {
         self.delegate = delegate
     }
 
 }
 
 extension ALMobidrivenInterstitialAdapter:MAInterstitialAdapterDelegate {
-    func didLoadInterstitialAd() {
+    public func didLoadInterstitialAd() {
         // print("IA :: didLoadInterstitialAd")
     }
     
-    func didLoadInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didLoadInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("IA :: didLoadInterstitialAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didFailToLoadInterstitialAdWithError(_ adapterError: MAAdapterError) {
+    public func didFailToLoadInterstitialAdWithError(_ adapterError: MAAdapterError) {
         // print("IA :: didFailToLoadInterstitialAdWithError: \(adapterError)")
     }
     
-    func didDisplayInterstitialAd() {
+    public func didDisplayInterstitialAd() {
         // print("IA :: didDisplayInterstitialAd")
     }
     
-    func didDisplayInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didDisplayInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("IA :: didDisplayInterstitialAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didClickInterstitialAd() {
+    public func didClickInterstitialAd() {
         // print("IA :: didClickInterstitialAd")
     }
     
-    func didClickInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didClickInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("IA :: didClickInterstitialAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didHideInterstitialAd() {
+    public func didHideInterstitialAd() {
         // print("IA :: didHideInterstitialAd")
     }
     
-    func didHideInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didHideInterstitialAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("IA :: didHideInterstitialAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didFailToDisplayInterstitialAdWithError(_ adapterError: MAAdapterError) {
+    public func didFailToDisplayInterstitialAdWithError(_ adapterError: MAAdapterError) {
         // print("IA :: didFailToDisplayInterstitialAdWithError: \(adapterError)")
     }
     

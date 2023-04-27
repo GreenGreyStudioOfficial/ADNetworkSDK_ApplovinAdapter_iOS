@@ -13,7 +13,7 @@ public class ALMobidrivenRewardedAdapter:NSObject {
     
     weak var delegate:MARewardedAdapterDelegate?
     
-    func loadRewardedAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MARewardedAdapterDelegate) {
+    public func loadRewardedAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MARewardedAdapterDelegate) {
         self.delegate = delegate
         
         // print("ADAPTER: ALMobidrivenCustomAdapter loadInterstitialAd")
@@ -23,62 +23,62 @@ public class ALMobidrivenRewardedAdapter:NSObject {
         ADNetworkSDK.shared.load(rewarded: true)
     }
     
-    func showRewardedAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MARewardedAdapterDelegate) {
+    public func showRewardedAd(for parameters: MAAdapterResponseParameters, andNotify delegate: MARewardedAdapterDelegate) {
         self.delegate = delegate
     }
 
 }
 
 extension ALMobidrivenRewardedAdapter:MARewardedAdapterDelegate {
-    func didLoadRewardedAd() {
+    public func didLoadRewardedAd() {
         // print("RA :: didLoadRewardedAd")
     }
     
-    func didLoadRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didLoadRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("RA :: didLoadRewardedAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didFailToLoadRewardedAdWithError(_ adapterError: MAAdapterError) {
+    public func didFailToLoadRewardedAdWithError(_ adapterError: MAAdapterError) {
         // print("RA :: didFailToLoadRewardedAdWithError: \(adapterError)")
     }
     
-    func didDisplayRewardedAd() {
+    public func didDisplayRewardedAd() {
         // print("RA :: didDisplayRewardedAd")
     }
     
-    func didDisplayRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didDisplayRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("RA :: didDisplayRewardedAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didFailToDisplayRewardedAdWithError(_ adapterError: MAAdapterError) {
+    public func didFailToDisplayRewardedAdWithError(_ adapterError: MAAdapterError) {
         // print("RA :: didFailToDisplayRewardedAdWithError: \(adapterError)")
     }
     
-    func didClickRewardedAd() {
+    public func didClickRewardedAd() {
         // print("RA :: didClickRewardedAd")
     }
     
-    func didClickRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didClickRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("RA :: didClickRewardedAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didHideRewardedAd() {
+    public func didHideRewardedAd() {
         // print("RA :: didHideRewardedAd")
     }
     
-    func didHideRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
+    public func didHideRewardedAd(withExtraInfo extraInfo: [String : Any]?) {
         // print("RA :: didHideRewardedAd withExtraInfo: \(String(describing: extraInfo))")
     }
     
-    func didStartRewardedAdVideo() {
+    public func didStartRewardedAdVideo() {
         // print("RA :: didStartRewardedAdVideo")
     }
     
-    func didCompleteRewardedAdVideo() {
+    public func didCompleteRewardedAdVideo() {
         // print("RA :: didCompleteRewardedAdVideo")
     }
     
-    func didRewardUser(with reward: MAReward) {
+    public func didRewardUser(with reward: MAReward) {
         // print("RA :: didRewardUser, reward: \(reward)")
     }
     
