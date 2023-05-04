@@ -17,5 +17,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.static_framework = true
   s.user_target_xcconfig = { 'ONLY_ACTIVE_ARCH' => 'YES' } 
-  s.dependency "ADNetworkSDK"
+  s.dependency "AppLovinSDK"
 end
