@@ -31,6 +31,10 @@ public class ALMobidrivenInterstitialAdapter:NSObject {
 }
 
 extension ALMobidrivenInterstitialAdapter:MAInterstitialAdapterDelegate {
+    public func didFailToDisplayInterstitialAdWithError(_ adapterError: MAAdapterError, extraInfo: [String : Any]?) {
+        // print("IA :: didFailToDisplayInterstitialAdWithError: \(adapterError)")
+    }
+    
     public func didLoadInterstitialAd() {
         // print("IA :: didLoadInterstitialAd")
     }

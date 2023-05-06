@@ -30,6 +30,14 @@ public class ALMobidrivenRewardedAdapter:NSObject {
 }
 
 extension ALMobidrivenRewardedAdapter:MARewardedAdapterDelegate {
+    public func didFailToDisplayRewardedAdWithError(_ adapterError: MAAdapterError, extraInfo: [String : Any]?) {
+        // print("RA :: didFailToDisplayRewardedAdWithError: \(adapterError)")
+    }
+    
+    public func didRewardUser(with reward: MAReward, extraInfo: [String : Any]?) {
+        // print("RA :: didRewardUser withExtraInfo: \(String(describing: extraInfo))")
+    }
+    
     public func didLoadRewardedAd() {
         // print("RA :: didLoadRewardedAd")
     }
