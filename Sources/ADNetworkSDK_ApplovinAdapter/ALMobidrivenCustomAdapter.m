@@ -30,7 +30,6 @@ BOOL haveAdsToShow = NO;
     if (gameId.length != 0) {
         //dispatch_async(dispatch_get_main_queue(), ^(void) {
             NSLog(@"gameId: %@", gameId);
-            //haveAdsToShow = NO;
             [ADNetworkSDK shared].debug = YES;
             [ADNetworkSDK.shared setupWithKey:gameId delegate:self];
             completionHandler(MAAdapterInitializationStatusInitializedSuccess, nil);
@@ -57,9 +56,9 @@ BOOL haveAdsToShow = NO;
     ADNetworkSDK.shared.delegate = self;
     if (haveAdsToShow) {
         [self.interstitialDelegate didLoadInterstitialAd];
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [ADNetworkSDK.shared show];
-        });
+        //dispatch_async(dispatch_get_main_queue(), ^(void) {
+        //    [ADNetworkSDK.shared show];
+        //});
     }
     else {
         [ADNetworkSDK.shared loadAdWithRewarded:NO];
@@ -69,6 +68,7 @@ BOOL haveAdsToShow = NO;
 - (void)showInterstitialAdForParameters:(nonnull id<MAAdapterResponseParameters>)parameters andNotify:(nonnull id<MAInterstitialAdapterDelegate>)delegate {
     NSLog(@"----- ALMobidrivenCustomAdapter: showInterstitialAdForParameters");
     self.interstitialDelegate = delegate;
+    ADNetworkSDK.shared.delegate = self;
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         [ADNetworkSDK.shared show];
     });
@@ -81,9 +81,9 @@ BOOL haveAdsToShow = NO;
     ADNetworkSDK.shared.delegate = self;
     if (haveAdsToShow) {
         [self.rewardedDelegate didLoadRewardedAd];
-        dispatch_async(dispatch_get_main_queue(), ^(void) {
-            [ADNetworkSDK.shared show];
-        });
+        //dispatch_async(dispatch_get_main_queue(), ^(void) {
+        //    [ADNetworkSDK.shared show];
+        //});
     }
     else {
         [ADNetworkSDK.shared loadAdWithRewarded:YES];
@@ -93,6 +93,7 @@ BOOL haveAdsToShow = NO;
 - (void)showRewardedAdForParameters:(nonnull id<MAAdapterResponseParameters>)parameters andNotify:(nonnull id<MARewardedAdapterDelegate>)delegate {
     NSLog(@"----- ALMobidrivenCustomAdapter: showRewardedAdForParameters");
     self.rewardedDelegate = delegate;
+    ADNetworkSDK.shared.delegate = self;
     dispatch_async(dispatch_get_main_queue(), ^(void) {
         [ADNetworkSDK.shared show];
     });
@@ -102,9 +103,16 @@ BOOL haveAdsToShow = NO;
 
 - (void)downloadCompleteWithId:(NSString * _Nonnull)id fileName:(NSString * _Nonnull)fileName {
     NSLog(@"----- ADNetworkSDK: downloadCompleteWithId: %@", fileName);
-    dispatch_async(dispatch_get_main_queue(), ^(void) {
-        [ADNetworkSDK.shared show];
-    });
+    if (self.interstitialDelegate != nil) {
+        if ([self.interstitialDelegate respondsToSelector:@selector(didLoadInterstitialAd)]) {
+            [self.interstitialDelegate didLoadInterstitialAd];
+        }
+    }
+    if (self.rewardedDelegate != nil) {
+        if ([self.rewardedDelegate respondsToSelector:@selector(didLoadRewardedAd)]) {
+            [self.rewardedDelegate didLoadRewardedAd];
+        }
+    }
 }
 
 - (void)downloadFailedWithId:(NSString * _Nonnull)id error:(NSString * _Nonnull)error {

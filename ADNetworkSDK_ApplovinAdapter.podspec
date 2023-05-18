@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ADNetworkSDK_ApplovinAdapter'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'Mobidriven ADNetworkSDK Applovin Adapter'
 
   s.homepage         = 'https://github.com/GreenGreyStudioOfficial/ADNetworkSDK_ApplovinAdapter_iOS'
