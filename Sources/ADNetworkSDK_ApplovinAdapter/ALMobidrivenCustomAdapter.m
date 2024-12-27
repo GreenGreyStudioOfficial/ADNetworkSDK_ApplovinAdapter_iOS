@@ -26,7 +26,7 @@ BOOL haveAdsToShow = NO;
 
 - (void)initializeWithParameters:(id<MAAdapterInitializationParameters>)parameters completionHandler:(void (^)(MAAdapterInitializationStatus, NSString * _Nullable))completionHandler {
     NSLog(@"----- ALMobidrivenCustomAdapter: initializeWithParameters");
-    NSString *gameId = parameters.customParameters[@"gameId"];
+    NSString *gameId = parameters.serverParameters[@"app_id"];
     if (gameId.length != 0) {
         //dispatch_async(dispatch_get_main_queue(), ^(void) {
             NSLog(@"gameId: %@", gameId);
@@ -166,11 +166,13 @@ BOOL haveAdsToShow = NO;
 
 - (void)showCompleteWithId:(NSString * _Nullable)id rewarded:(BOOL)rewarded rewardRecieved:(BOOL)rewardRecieved {
     NSLog(@"----- ADNetworkSDK: showCompleteWithId: %@", id);
+    /*
     if (self.rewardedDelegate != nil) {
         if ([self.rewardedDelegate respondsToSelector:@selector(didCompleteRewardedAdVideo)]) {
             [self.rewardedDelegate didCompleteRewardedAdVideo];
         }
     }
+    */
 }
 
 - (void)showFailedWithError:(NSString * _Nonnull)error {
