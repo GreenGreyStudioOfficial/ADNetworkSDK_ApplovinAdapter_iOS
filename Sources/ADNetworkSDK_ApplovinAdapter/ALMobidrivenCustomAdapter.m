@@ -11,6 +11,14 @@
 @property (nonatomic, weak) id<MAInterstitialAdapterDelegate> interstitialDelegate;
 @property (nonatomic, weak) id<MARewardedAdapterDelegate> rewardedDelegate;
 //@property (nonatomic) BOOL haveAdsToShow;
+//MAAdViewAdDelegate
+@property (nonatomic, weak) id<MAAdViewAdapterDelegate> bannerDelegate;
+
+/*
+    video = 0,
+    banner = 1
+    Interstitial = 2
+ */
 
 @end
 
@@ -42,7 +50,7 @@ BOOL haveAdsToShow = NO;
 }
 
 - (NSString *)SDKVersion {
-    return @"1.0.0";
+    return @"1.4.0";
 }
 
 - (NSString *)adapterVersion {
@@ -61,7 +69,8 @@ BOOL haveAdsToShow = NO;
         //});
     }
     else {
-        [ADNetworkSDK.shared loadAdWithRewarded:NO];
+        NSArray *formats = @[@2];
+        [ADNetworkSDK.shared loadAdWithRewarded:NO formats:formats];
     }
 }
 
@@ -86,7 +95,8 @@ BOOL haveAdsToShow = NO;
         //});
     }
     else {
-        [ADNetworkSDK.shared loadAdWithRewarded:YES];
+        NSArray *formats = @[@0];
+        [ADNetworkSDK.shared loadAdWithRewarded:YES formats:formats];
     }
 }
 
@@ -99,10 +109,27 @@ BOOL haveAdsToShow = NO;
     });
 }
 
+#pragma mark - MAAdViewAdapter Methods
+
+- (void)loadAdViewAdForParameters:(id<MAAdapterResponseParameters>)parameters
+                         adFormat:(MAAdFormat *)adFormat
+                        andNotify:(id<MAAdViewAdapterDelegate>)delegate
+{
+    NSString *placementIdentifier = parameters.thirdPartyAdPlacementIdentifier;
+    // BOOL isBiddingAd = [parameters.bidResponse al_isValidString];
+    // BOOL isNative = [parameters.serverParameters al_boolForKey: @"is_native"];
+    
+    NSLog(@"ALMobidrivenCustomAdapter Loading banner: %@, format: %@", placementIdentifier, adFormat.label);
+
+    NSArray *formats = @[@1];
+    [ADNetworkSDK.shared loadAdWithRewarded:NO formats:formats];
+}
+
 #pragma mark - Mobidrriven ADNetworkSDK
 
 - (void)downloadCompleteWithId:(NSString * _Nonnull)id fileName:(NSString * _Nonnull)fileName {
     NSLog(@"----- ADNetworkSDK: downloadCompleteWithId: %@", fileName);
+    
     if (self.interstitialDelegate != nil) {
         if ([self.interstitialDelegate respondsToSelector:@selector(didLoadInterstitialAd)]) {
             [self.interstitialDelegate didLoadInterstitialAd];
